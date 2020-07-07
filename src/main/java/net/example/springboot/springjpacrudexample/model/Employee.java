@@ -39,7 +39,7 @@ public class Employee {
         this.id = id;
     }
 
-    @Column(name = "firstNaem" , nullable = false)
+    @Column(name = "firstName" , nullable = false)
     public String getFirstName() {
         return this.firstName;
     }

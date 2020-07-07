@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
-import { error } from 'console';
+//import { error } from 'console';
 
 @Component({
   selector: 'app-update-employee',
