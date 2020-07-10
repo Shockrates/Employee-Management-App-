@@ -13,23 +13,29 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getEmployee(id: number): Observable<any>{
-    return this.http.get('${this.baseUrl}/${id}');
+    return this.http.get(`${this.baseUrl}/${id}`);
+    //return this.http.get(this.baseUrl.append(id.toString);
   }
 
   createEmployee(employee: Object): Observable<Object>{
-    return this.http.post('${this.baseUrl}',employee);
+    return this.http.post(`${this.baseUrl}`,employee);
   }
 
   updateEmployee(id: number, value: any): Observable<Object>{
-    return this.http.post('${this.baseUrl}/${id}',value);
+    return this.http.put(`${this.baseUrl}/${id}`,value);
   }
   
   deleteEmployee(id: number): Observable<any>{
-    return this.http.delete('${this.baseUrl}/${id}', {responseType: 'text'});
+    return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
   }
 
   getEmployeesList(): Observable<any>{
-    return this.http.get('${this.baseUrl}');
+    //return this.http.get('${this.baseUrl}');
+    return this.http.get(this.baseUrl);
 
+  }
+
+  public findAll(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
   }
 }

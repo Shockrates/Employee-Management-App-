@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.example.springboot.springjpacrudexample.exception.ResourceNotFoundException;
@@ -23,18 +24,19 @@ import net.example.springboot.springjpacrudexample.model.Employee;
 import net.example.springboot.springjpacrudexample.repository.EmployeeRepository;
 
 //To enable CORS on the server, add a @CrossOrigin annotation to the EmployeeController
-@RestController @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("api/v1")
+@RestController 
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(path="/api/v1")
 public class EmployController {
 
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @GetMapping("/employees")
+    @GetMapping(path="/employees")
     public List<Employee> getAllEmployees(){
        return  employeeRepository.findAll();
     }
-
+   
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee> getEmployeeByid(@PathVariable(value = "id") Long employeeId) throws ResourceNotFoundException{
 
